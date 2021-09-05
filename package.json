@@ -1,0 +1,48 @@
+{
+  "name": "scratchblocks2",
+  "version": "0.1.0",
+  "description": "A TypeScript rewrite of the original scratchblocks package",
+  "keywords": [
+    "scratchblocks",
+    "scratch",
+    "blocks"
+  ],
+  "homepage": "https://github.com/Ascor8522/scratchblocks2",
+  "bugs": {
+    "url": "https://github.com/Ascor8522/scratchblocks2/issues"
+  },
+  "license": "CC-BY-NC-SA-4.0",
+  "contributors": [
+    {
+      "name": "Ascor8522",
+      "url": "https://github.com/Ascor8522"
+    }
+  ],
+  "funding": [],
+  "main": "lib/dist/scratchblocks2.js",
+  "types": "lib/types",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": "github:Ascor8522/scratchblocks2",
+  "scripts": {
+    "compile-css": "npx sass playground/scss:playground/css --no-source-map",
+    "compile-css-watch": "npx sass --watch playground/scss:playground/css --no-source-map",
+    "compile-lib": "npx tsc --project lib",
+    "compile-lib-watch": "npx tsc --project lib --watch",
+    "bundle-lib": "npx rollup --input lib/build/index.js --file lib/dist/scratchblocks2.js --format es --name scratchblocks2",
+    "bundle-lib-watch": "npx rollup --watch --input lib/build/index.js --file lib/dist/scratchblocks2.js --format es --name scratchblocks2",
+    "compile-playground": "npx tsc --project playground",
+    "compile-playground-watch": "npx tsc --project playground --watch",
+    "compile-lambda": "npx tsc --project lambda",
+    "compile-lambda-watch": "npx tsc --project lambda --watch",
+    "serve-playground": "python -m http.server --directory playground"
+  },
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^1.9.0",
+    "rollup": "^2.56.3",
+    "sass": "^1.38.2",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.2"
+  }
+}

@@ -1,0 +1,33 @@
+{
+	"name": "3.0",
+	"colors": {
+		"motion": "#4B9AFB",
+		"looks": "#9A6CF9",
+		"sound": "#D067CB",
+		"events": "#FFBE30",
+		"control": "#FFAA32",
+		"sensing": "#5BB2D4",
+		"operators": "#57BF63",
+		"variables": "#FF8B2C",
+		"list": "#FF6624",
+		"custom": "#FF687F",
+		"custom-arg": "#FF687F",
+		"extension": "#00BC8F",
+		"grey": "#BFBFBF",
+		"undefined": "#EE4442",
+		"obsolete": "#EE4442",
+		"music": "#00BC8F",
+		"pen": "#00BC8F",
+		"video": "#00BC8F",
+		"tts": "#00BC8F",
+		"translate": "#00BC8F",
+		"makeymakey": "#00BC8F",
+		"microbit": "#00BC8F",
+		"ev3": "#00BC8F",
+		"boost": "#00BC8F",
+		"wedo": "#00BC8F",
+		"wedo2": "#00BC8F",
+		"gdxfor": "#00BC8F",
+		"picoboard": "#00BC8F"
+	}
+}

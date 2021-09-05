@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+	  "target": "esnext",
+	  "module": "ESNext",
+	  "lib": ["ESNext", "DOM"],
+	  "strict": true,
+	  "esModuleInterop": true,
+	},
+	"typeAcquisition": {
+		"enable": true
+	}
+  }
+  

@@ -1,0 +1,87 @@
+{
+	"blocks": [
+		{
+			"id": "motion_movesteps",
+			"string": "move %d steps",
+			"replaced": "move %d steps",
+			"category": "motion",
+			"shape": "stack"
+		},
+		{
+			"id": "motion_turnright",
+			"string": "turn right %d degrees",
+			"replaced": "turn @right %d degrees",
+			"category": "motion",
+			"shape": "stack"
+		},
+		{
+			"id": "motion_turnleft",
+			"string": "turn left %d degrees",
+			"replaced": "turn @left %d degrees",
+			"category": "motion",
+			"shape": "stack"
+		},
+		{
+			"id": "motion_goto_menu",
+			"string": "go to %m",
+			"replaced": "go to %m",
+			"category": "motion",
+			"shape": "stack"
+		},
+		{
+			"id": "motion_gotoxy",
+			"string": "go to x: %d y: %d",
+			"replaced": "go to x: %d y: %d",
+			"category": "motion",
+			"shape": "stack"
+		},
+		{
+			"id": "motion_glideto_menu",
+			"string": "glide %d secs to %m",
+			"replaced": "glide %d secs to %m",
+			"category": "motion",
+			"shape": "stack"
+		},
+		{
+			"id": "motion_glidesecstoxy",
+			"string": "glide %d secs to x: %d y: %d",
+			"replaced": "glide %d secs to x: %d y: %d",
+			"category": "motion",
+			"shape": "stack"
+		}
+	],
+	"icons": [
+		{
+			"id": "greenflag",
+			"path": "greenflag.svg"
+		},
+		{
+			"id": "right",
+			"path": "right.svg"
+		},
+		{
+			"id": "left",
+			"path": "left.svg"
+		}
+	],
+	"inputs": [
+		{
+			"type": "number",
+			"symbol": "%d",
+			"start": "(",
+			"end": ")"
+		},
+		{
+			"type": "dropdown",
+			"symbol": "%m",
+			"start": "(",
+			"end": "v)"
+		},
+		{
+			"type": "text",
+			"symbol": "%s",
+			"start": "[",
+			"end": "]"
+		}
+	]
+}
