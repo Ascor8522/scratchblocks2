@@ -1,7 +1,7 @@
-import { LocaleLang } from "./model/Locale";
-import { Parser } from "./model/Parser";
-import { Renderer } from "./model/Renderer";
-import { Versions, defaultVersion } from "./model/Versions";
+import { LocaleLang } from "./core/Source";
+import { Parser } from "./core/Parser";
+import { Renderer } from "./core/Renderer";
+import { Versions, defaultVersion } from "./core/Versions";
 
 export namespace scratchblocks2 {
 

@@ -1,16 +1,15 @@
-import { Attributes } from "../utils/Attributes";
+import { Attributes } from "../../utils/Attributes";
 import { Block } from "./Block";
 import { Document } from "./Document";
 import { Element } from "./Element";
-import { Explainable } from "./Explainable";
-import { LocaleLang } from "./Locale";
-import { Renderable } from "./Renderable";
-import { Renderer } from "./Renderer";
-import { Translatable } from "./Translatable";
-import { Versions } from "./Versions";
+import { Explainable } from "./interfaces/Explainable";
+import { LocaleLang } from "../Source";
+import { Renderable } from "./interfaces/Renderable";
+import { Renderer } from "../Renderer";
+import { Translatable } from "./interfaces/Translatable";
+import { Versions } from "../Versions";
 
 export class Stack extends Element<Document> implements Explainable, Translatable, Renderable {
-
 	private _blocks: Block[];
 
 	public static from(sourceCode: string, parent: Document, version: Versions): Stack {

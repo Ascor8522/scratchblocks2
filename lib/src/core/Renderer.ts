@@ -1,8 +1,8 @@
-import { Block } from "./Block";
-import { Document } from "./Document";
-import { Input } from "./Input";
-import { Renderable } from "./Renderable";
-import { Stack } from "./Stack";
+import { Block } from "./model/Block";
+import { Document } from "./model/Document";
+import { Input } from "./model/Input";
+import { Renderable } from "./model/interfaces/Renderable";
+import { Stack } from "./model/Stack";
 
 export abstract class Renderer {
 

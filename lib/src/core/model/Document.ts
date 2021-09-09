@@ -1,15 +1,14 @@
-import { Attributes } from "../utils/Attributes";
-import { Explainable } from "./Explainable";
-import { Renderable } from "./Renderable";
-import { Renderer } from "./Renderer";
-import { Stack } from "./Stack";
-import { Translatable } from "./Translatable";
+import { Attributes } from "../../utils/Attributes";
 import { Element } from "./Element";
-import { Versions } from "./Versions";
-import { LocaleLang } from "./Locale";
+import { Explainable } from "./interfaces/Explainable";
+import { LocaleLang } from "../Source";
+import { Renderable } from "./interfaces/Renderable";
+import { Renderer } from "../Renderer";
+import { Stack } from "./Stack";
+import { Translatable } from "./interfaces/Translatable";
+import { Versions } from "../Versions";
 
 export class Document extends Element<null> implements Explainable, Translatable, Renderable {
-
 	private _stacks: Stack[] = [];
 
 	public static from(sourceCode: string, parent: null, version: Versions): Document {
@@ -28,7 +27,7 @@ export class Document extends Element<null> implements Explainable, Translatable
 	}
 
 	public explain(indentLevel: number = 0): string {
-		return "\t".repeat(indentLevel) +  "Document:" + "\n" + this.stacks.map(stack => stack.explain(indentLevel + 1));
+		return "\t".repeat(indentLevel) + "Document:" + "\n" + this.stacks.map(stack => stack.explain(indentLevel + 1));
 	}
 
 	public explainHTML(): HTMLDetailsElement {
@@ -65,7 +64,7 @@ export class Document extends Element<null> implements Explainable, Translatable
 	public translate(language: LocaleLang): Document {
 		return new Document({ parent: this.parent, version: this.version, stacks: this.stacks.map(stack => stack.translate(language)) });
 	}
-	
+
 	public render(renderer: Renderer): ReturnType<Renderable["render"]> {
 		return renderer.renderDocument(this);
 	}

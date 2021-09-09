@@ -1,6 +1,2 @@
-lambda/build
-lib/build
-lib/dist
-lib/types
+_site
 node_modules
-playground/build

@@ -1,22 +1,14 @@
-import { Attributes } from "../utils/Attributes";
+import { Attributes } from "../../utils/Attributes";
 import { Block } from "./Block";
 import { Element } from "./Element";
-import { Explainable } from "./Explainable";
-import { LocaleLang } from "./Locale";
-import { Renderable } from "./Renderable";
-import { Renderer } from "./Renderer";
-import { Translatable } from "./Translatable";
-import { Versions } from "./Versions";
-
-export const enum InputTypes {
-	BOOLEAN = "boolean",
-	NUMBER = "number",
-	TEXT = "text",
-	BLOCK = "block",
-}
+import { Explainable } from "./interfaces/Explainable";
+import { LocaleLang, SourceInput } from "../Source";
+import { Renderable } from "./interfaces/Renderable";
+import { Renderer } from "../Renderer";
+import { Translatable } from "./interfaces/Translatable";
+import { Versions } from "../Versions";
 
 export class Input extends Element<Block> implements Explainable, Translatable, Renderable {
-
 	private _type: InputTypes;
 	private _value: string | Block;
 
@@ -58,3 +50,45 @@ export class Input extends Element<Block> implements Explainable, Translatable, 
 	}
 
 }
+
+
+export const enum InputTypes {
+	BOOLEAN = "boolean",
+	NUMBER = "number",
+	TEXT = "text",
+	DROPDOWN = "dropdown",
+	STACK = "stack"
+}
+
+export const inputTpes: SourceInput[] = [
+	{
+		"type": InputTypes.NUMBER,
+		"symbol": "%d",
+		"start": "(",
+		"end": ")",
+	},
+	{
+		"type": InputTypes.DROPDOWN,
+		"symbol": "%m",
+		"start": "(",
+		"end": "v)",
+	},
+	{
+		"type": InputTypes.TEXT,
+		"symbol": "%s",
+		"start": "[",
+		"end": "]",
+	},
+	{
+		"type": InputTypes.BOOLEAN,
+		"symbol": "%b",
+		"start": "<",
+		"end": ">",
+	},
+	{
+		"type": InputTypes.STACK,
+		"symbol": "%t",
+		"start": "{",
+		"end": "}",
+	},
+];

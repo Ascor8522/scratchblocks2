@@ -1,4 +1,4 @@
-import { Document } from "./Document";
+import { Document } from "./model/Document";
 import { Versions, defaultVersion } from "./Versions";
 
 export abstract class Parser {

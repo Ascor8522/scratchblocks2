@@ -1,9 +1,8 @@
-import { Attributes } from "../utils/Attributes";
-import { Renderer } from "./Renderer";
-import { Versions } from "./Versions";
+import { Attributes } from "../../utils/Attributes";
+import { Renderer } from "../Renderer";
+import { Versions } from "../Versions";
 
 export abstract class Element<T extends ThisType<Element<T>> | null> {
-
 	private _parent: T;
 	private _version: Versions;
 

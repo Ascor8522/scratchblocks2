@@ -26,22 +26,32 @@
   },
   "repository": "github:Ascor8522/scratchblocks2",
   "scripts": {
-    "compile-css": "npx sass playground/scss:playground/css --no-source-map",
-    "compile-css-watch": "npx sass --watch playground/scss:playground/css --no-source-map",
-    "compile-lib": "npx tsc --project lib",
-    "compile-lib-watch": "npx tsc --project lib --watch",
-    "bundle-lib": "npx rollup --input lib/build/index.js --file lib/dist/scratchblocks2.js --format es --name scratchblocks2",
-    "bundle-lib-watch": "npx rollup --watch --input lib/build/index.js --file lib/dist/scratchblocks2.js --format es --name scratchblocks2",
-    "compile-playground": "npx tsc --project playground",
-    "compile-playground-watch": "npx tsc --project playground --watch",
-    "compile-lambda": "npx tsc --project lambda",
-    "compile-lambda-watch": "npx tsc --project lambda --watch",
-    "serve-playground": "python -m http.server --directory playground"
+    "lambda-clean": "rm -rf lambda/build",
+    "lambda-compile-watch": "npx tsc --project lambda --watch",
+    "lambda-compile": "npx tsc --project lambda",
+
+    "lib-clean": "rm -rf lib/build lib/dist lib/types",
+    "lib-bundle-watch": "npx rollup --watch --input lib/build/index.js --file lib/dist/scratchblocks2.js --format es --name scratchblocks2",
+    "lib-bundle": "npx rollup --input lib/build/index.js --file lib/dist/scratchblocks2.js --format es --name scratchblocks2",
+    "lib-compile-watch": "npx tsc --project lib --watch",
+    "lib-compile": "npx tsc --project lib",
+
+    "tests-compile-watch": "",
+    "tests-compile": "",
+    "tests-run": "",
+
+    "playground-compile-watch": "npx tsc --project playground --watch",
+    "playground-compile": "npx tsc --project playground",
+    "playground-serve-watch": "bundle exec jekyll serve --incremental --force_polling",
+    "playground-serve": "bundle exec jekyll serve --no-watch",
+    
+    "start": "npm run-script playground-serve"
   },
   "devDependencies": {
     "@google-cloud/functions-framework": "^1.9.0",
+    "chai": "^4.3.4",
+    "mocha": "^9.1.1",
     "rollup": "^2.56.3",
-    "sass": "^1.38.2",
     "tslib": "^2.3.1",
     "typescript": "^4.4.2"
   }

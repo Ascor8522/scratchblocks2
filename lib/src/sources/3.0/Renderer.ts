@@ -1,9 +1,9 @@
-import { Block } from "../../model/Block";
-import { Document } from "../../model/Document";
-import { Input } from "../../model/Input";
-import { Renderable } from "../../model/Renderable";
-import { Renderer as BaseRenderer } from "../../model/Renderer";
-import { Stack } from "../../model/Stack";
+import { Block } from "../../core/model/Block";
+import { Document } from "../../core/model/Document";
+import { Input } from "../../core/model/Input";
+import { Renderable } from "../../core/model/interfaces/Renderable";
+import { Renderer as BaseRenderer } from "../../core/Renderer";
+import { Stack } from "../../core/model/Stack";
 
 export class Renderer extends BaseRenderer {
 
