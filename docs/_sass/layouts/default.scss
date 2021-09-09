@@ -1,0 +1,76 @@
+@import "../traits/size";
+@import "../traits/padding";
+@import "../traits/container";
+@import "../traits/list.scss";
+
+html {
+	@extend %nomaginpadding;
+	@extend %fullsize;
+	body {
+		@extend %nomaginpadding;
+		@extend %fullsize;
+		@extend %vContainer;
+		gap: 20px;
+		background-color: var(--background);
+		color: var(--text);
+		@import "partials/header";
+		main {
+			display: flex;
+			flex-grow: 1;
+			flex-shrink: 1;
+			gap: 20px;
+			overflow: auto;
+			@extend %padded;
+			div {
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+				@import "partials/horizontalList";
+				ul {
+					height: 50px;
+				}
+			}
+		}
+		@import "partials/footer";
+	}
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #1B1A26;
+		--background2: #16161E;
+		--primary: #27273a;
+		--secondary: #1D1C29;
+		--text: #b6b8c8;
+		--greyed: #42465d;
+	}
+}
+  
+@media (prefers-color-scheme: light) {
+	:root {
+		--background: #9a98aa;
+		--background2: #9191a8;
+		--primary: #7b7bb3;
+		--secondary: #7f7ab1;
+		--text: #b6b8c8;
+	}
+}
+* {
+	font-family: sans-serif;
+}
+ul {
+	padding-inline-start: 0;
+	margin: 0;
+	li {
+		list-style: none;
+		h1 {
+			margin: 0;
+		}
+	}
+}
+a {
+	text-decoration: none;
+	color: var(--text);
+	&:visited {
+		color: var(--text);
+	}
+}

@@ -1,0 +1,28 @@
+%nomaginpadding {
+	margin: 0;
+	padding: 0;
+}
+%vPadded {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+%hPadded {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+%padded {
+	@extend %hPadded;
+	@extend %vPadded;
+}
+%vMarged {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+%hMarged {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+%marged {
+	@extend %hMarged;
+	@extend %vMarged;
+}

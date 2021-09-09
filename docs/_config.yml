@@ -1,0 +1,18 @@
+source: .
+safe: false
+exclude: [build, tsconfig.json]
+plugins:
+  - sass
+  - liquid
+lsi: false
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
+sass:
+  sass_dir: _sass
+lib_version: 0.1.0
+baseurl: /scratchblocks2

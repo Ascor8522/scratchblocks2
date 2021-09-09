@@ -1,0 +1,12 @@
+<header>
+	<nav>
+		<ul>
+			<li><a href="{{ site.baseurl }}{% link index.html %}">scratchblocks2</a></li>
+			<li class="spacer"></li>
+			<li class='{% if page.title == "Render" %}active{% endif %}'><a href="{{ site.baseurl }}{% link render.html %}">Render</a></li>
+			<li class='{% if page.title == "Explain" %}active{% endif %}'><a href="{{ site.baseurl }}{% link explain.html %}">Explain</a></li>
+			<li class='{% if page.title == "Export" %}active{% endif %}'><a href="{{ site.baseurl }}{% link export.html %}">Export</a></li>
+			<li class='{% if page.title == "Translate" %}active{% endif %}'><a href="{{ site.baseurl }}{% link translate.html %}">Translate</a></li>
+		</ul>
+	</nav>
+</header>

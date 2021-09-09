@@ -1,0 +1,23 @@
+---
+title: Explain
+layout: default
+description: Explain the parsed object from the code
+thumbnail: img/placeholder.jpg
+---
+
+<div class="left">
+	<ul>
+		<li>Explanation</li>
+		<li class="spacer"></li>
+		<li>
+			<fieldset>
+				<input type="radio" name="explanationType" id="text" value="text" checked>
+				<label for="text">Text</label>
+				<input type="radio" name="explanationType" id="html" value="html">
+				<label for="html">HTML</label>
+			</fieldset>
+		</li>
+	</ul>
+	<textarea id="explanation" readonly></textarea>
+</div>
+{% include right.html %}

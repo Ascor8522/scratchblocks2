@@ -1,0 +1,17 @@
+main._Index {
+	@extend %padded;
+	@extend %vContainer;
+	ul {
+		@extend %hContainer;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 20px;
+		li {
+			a {
+				div {
+					@extend %box;
+				}
+			}
+		}
+	}
+}

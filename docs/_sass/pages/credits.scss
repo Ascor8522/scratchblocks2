@@ -1,0 +1,10 @@
+main._Credits {
+	@extend %vContainer;
+	@extend %marged;
+	* {
+		@extend %nomaginpadding;
+	}
+	ul {
+		@extend %list;
+	}
+}

@@ -1,0 +1,25 @@
+---
+title: Index
+layout: default
+description: Home page
+thumbnail: img/placeholder.jpg
+---
+
+<h1>scratchblocks2</h1>
+<ul>
+	{% for p in site.pages %}
+		{% if p.url contains "html" %}
+		<li>
+			<a href="{{ site.baseurl }}{{ p.url }}">
+				<div>
+					<figure>
+						<img src="{{ p.thumbnail }}" alt="{{ p.title }}">
+						<p>{{ p.title }}</p>
+						<figcaption>{{ p.description }}</figcaption>
+					</figure>
+				</div>
+			</a>
+		</li>
+		{% endif %}
+	{% endfor %}
+</ul>

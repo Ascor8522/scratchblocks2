@@ -40,12 +40,12 @@
     "tests-compile": "",
     "tests-run": "",
 
-    "playground-compile-watch": "npx tsc --project playground --watch",
-    "playground-compile": "npx tsc --project playground",
-    "playground-serve-watch": "bundle exec jekyll serve --incremental --force_polling",
-    "playground-serve": "bundle exec jekyll serve --no-watch",
+    "docs-compile-watch": "npx tsc --project docs --watch",
+    "docs-compile": "npx tsc --project docs",
+    "docs-serve-watch": "bundle exec jekyll serve --baseurl '' --incremental --force_polling",
+    "docs-serve": "bundle exec jekyll serve --baseurl '' --no-watch",
     
-    "start": "npm run-script playground-serve"
+    "start": "npm run-script docs-serve"
   },
   "devDependencies": {
     "@google-cloud/functions-framework": "^1.9.0",

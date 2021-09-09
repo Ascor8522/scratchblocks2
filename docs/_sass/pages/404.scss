@@ -1,0 +1,12 @@
+main._404 {
+	@extend %vContainer;
+	@extend %padded;
+	justify-content: center;
+	* {
+		text-align: center;
+		@extend %nomaginpadding;
+	}
+	h1 {
+		font-size: 50pt;
+	}
+}

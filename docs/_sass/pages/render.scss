@@ -1,0 +1,10 @@
+main._Render {
+	div.left {
+		div#render {
+			@extend %fullsize;
+			border: solid 1px var(--text);
+			background-color: var(--background2);
+		}
+	}
+	@import "../partials/rightTextarea";
+}

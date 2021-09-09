@@ -1,0 +1,15 @@
+textarea {
+	@extend %fullsize;
+	resize: none;
+	font-family: monospace;
+	font-size: 13pt;
+	border-color: var(--text);
+	color: var(--text);
+	background-color: var(--background2);
+	&:focus {
+		outline: none;
+	}
+	&:focus:not(:read-only) {
+		border-color: var(--secondary);
+	}
+}

@@ -14,14 +14,15 @@ This packages:
 - makes the code much more easily upgradable
 - is language agnostic (doesn't consider English being the default, at lest in the code)
 - decouples the view (render) from the model
-- doesn't rely on the translations for Scratch
+  - makes it possible to add new blocks or new renderers easily
+- doesn't rely on the translations from Scratch
 
 ## Organisation
 
 This package is divided in multiple parts:
 
 - `lib` the library in itself (and UMD module)
-- `playground` a small website for testing / messing around purposes
+- `docs` a small website for testing / messing around purposes
 - `lambda` the code when setting up a SAAS instance (Google Cloud Platform in this case)
 
 ## Credits

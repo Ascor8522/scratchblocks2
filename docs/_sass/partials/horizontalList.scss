@@ -1,0 +1,61 @@
+ul {
+	@extend %hContainer;
+	align-items: end;
+	li {
+		padding: 10px;
+		font-size: 11pt;
+		font-weight: bold;
+		&:first-child {
+			font-size: 14pt;
+		}
+		&.active {
+			a {
+				background-color: var(--secondary);
+			}
+		}
+		a,
+		button {
+			color: var(--text);
+			background: var(--primary);
+			background-color: var(--primary);
+			border: none;
+			border-bottom: solid 2px transparent;
+			margin: 0;
+			cursor: pointer;
+			padding: 5px;
+			text-decoration: none;
+			&:hover {
+				border-bottom: solid 2px var(--text);
+			}
+		}
+		fieldset {
+			border: solid var(--primary) 1px;
+			border-radius: 100px;
+			@extend %nomaginpadding;
+			display: inline-flex;
+			input {
+				display: none;
+				&+label {
+					min-width: 50px;
+					height: 20px;
+					line-height: 20px;
+					justify-content: center;
+					display: inline-flex;
+					cursor: pointer;
+					color: var(--text);
+					&:first-of-type {
+						border-top-left-radius: 100px;
+						border-bottom-left-radius: 100px;
+					}
+					&:last-of-type {
+						border-top-right-radius: 100px;
+						border-bottom-right-radius: 100px;
+					}
+				}
+				&:checked+label {
+					background-color: var(--primary);
+				}
+			}
+		}
+	}
+}

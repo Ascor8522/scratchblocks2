@@ -1,0 +1,9 @@
+<footer>
+	<ul>
+		<li><span>Version {{ site.lib_version }}</span></li>
+		<li class="spacer"></li>
+		<li><a href="//github.com/Ascor8522/scratchblocks2">GitHub</a></li>
+		<li class='{% if page.title == "404" %}active{% endif %}'><a href="{{ site.baseurl }}{% link 404.html %}">404</a></li>
+		<li class='{% if page.title == "Credits" %}active{% endif %}'><a href="{{ site.baseurl }}{% link credits.html %}">Credits</a></li>
+	</ul>
+</footer>
