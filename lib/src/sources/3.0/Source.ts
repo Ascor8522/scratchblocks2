@@ -1,11 +1,14 @@
-import { InputTypes } from "../../core/model/Input";
-import { Source as BaseSource } from "../../core/Source";
-import { en } from "./locales/en/index";
-import { Renderer } from "./Renderer";
+import { Languages } from "../../core/Languages.js";
+import { InputTypes } from "../../core/model/Input.js";
+import { Source as BaseSource } from "../../core/Source.js";
+import { Loader } from "./Loader.js";
+import { en } from "./locales/en/index.js";
+import { Renderer } from "./Renderer.js";
 
 export class Source extends BaseSource {
 	protected readonly _name = "3.0";
 	protected readonly _renderer = new Renderer();
+	protected readonly _loader = new Loader();
 	protected readonly _colors = {
 		[BlockTypes.MOTION]: "#4B9AFB",
 		[BlockTypes.LOOKS]: "#9A6CF9",
@@ -37,7 +40,7 @@ export class Source extends BaseSource {
 		[BlockTypes.PICOBOARD]: "#00BC8F",
 	};
 	protected readonly _blocks = {
-		"en": en,
+		[Languages.ENGLISH]: en,
 	};
 	protected readonly _icons = {
 		"@right": "right.svg",
@@ -45,7 +48,7 @@ export class Source extends BaseSource {
 	};
 }
 
-export const enum BlockTypes {
+export enum BlockTypes {
 	MOTION = "motion",
 	LOOKS = "looks",
 	SOUND = "sound",

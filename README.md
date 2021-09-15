@@ -31,4 +31,4 @@ Thank you to the original authors of the [scratchblocks](https://github.com/scra
 
 ## License
 
-See the `License.md` file.
+See the [License.md](./License.md) file.

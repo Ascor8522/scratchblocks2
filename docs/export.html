@@ -4,3 +4,19 @@ layout: default
 description: Extracts the code from a project
 thumbnail: img/export.png
 ---
+
+<div>
+	<form>
+		<input placeholder="https://scratch.mit.edu/projects/" id="projectId" type="number" />
+		<input type="reset" />
+		<input type="checkbox" id="exportAsIndividual" value="Export stacks as individual scripts"/>
+	</form>
+</div>
+<div>
+	<div id="render">
+
+	</div>
+	<textarea id="source" readonly>
+
+	</textarea>
+</div>

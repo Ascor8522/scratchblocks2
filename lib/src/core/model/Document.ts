@@ -1,19 +1,22 @@
-import { Attributes } from "../../utils/Attributes";
-import { Element } from "./Element";
-import { Explainable } from "./interfaces/Explainable";
-import { LocaleLang } from "../Source";
-import { Renderable } from "./interfaces/Renderable";
-import { Renderer } from "../Renderer";
-import { Stack } from "./Stack";
-import { Translatable } from "./interfaces/Translatable";
-import { Versions } from "../Versions";
+import { Attributes } from "../../utils/Attributes.js";
+import { Element } from "./Element.js";
+import { Explainable } from "./interfaces/Explainable.js";
+import { Renderable } from "./interfaces/Renderable.js";
+import { Renderer } from "../Renderer.js";
+import { Stack } from "./Stack.js";
+import { Translatable } from "./interfaces/Translatable.js";
+import { Versions } from "../Versions.js";
+import { Languages } from "../Languages.js";
 
-export class Document extends Element<null> implements Explainable, Translatable, Renderable {
+export class Document extends Element<null> implements Explainable, Translatable<null, Document>, Renderable {
 	private _stacks: Stack[] = [];
+	private _lists: string[] = [];
+	private _variables: string[] = [];
+	private _customBlocks: string[] = [];
 
 	public static from(sourceCode: string, parent: null, version: Versions): Document {
 		let stacks;
-		throw new Error("Not implemented");
+		throw new Error("Not implemented"); // TODO
 		return new Document({ parent, version, stacks });
 	}
 
@@ -26,7 +29,21 @@ export class Document extends Element<null> implements Explainable, Translatable
 		return this._stacks;
 	}
 
-	public explain(indentLevel: number = 0): string {
+	public set stacks(value: Document["_stacks"]) {
+		this._stacks = value;
+	}
+
+	public getLanguage(): Languages {
+		const results = this.stacks
+			.map((stack: Stack) => stack.getLanguage())
+			.reduce((p, c: Languages) => (void ++p[c]) || p,
+				Object.fromEntries(Object.keys(Languages).map((key) => [key, 0])));
+		const max = Math.max(...Object.values(results));
+		return Object.entries(results)
+			.find(([key, value]) => value === max)![0] as Languages;
+	}
+
+	public explain(indentLevel: number = 0): string { // TODO improve
 		return "\t".repeat(indentLevel) + "Document:" + "\n" + this.stacks.map(stack => stack.explain(indentLevel + 1));
 	}
 
@@ -61,8 +78,10 @@ export class Document extends Element<null> implements Explainable, Translatable
 		return details;
 	}
 
-	public translate(language: LocaleLang): Document {
-		return new Document({ parent: this.parent, version: this.version, stacks: this.stacks.map(stack => stack.translate(language)) });
+	public translate(language: Languages, parent: null = null): ReturnType<Translatable<null, Document>["translate"]> {
+		const doc = new Document({ ...this, parent });
+		doc.stacks = this.stacks.map(stack => stack.translate(language, doc));
+		return doc;
 	}
 
 	public render(renderer: Renderer): ReturnType<Renderable["render"]> {

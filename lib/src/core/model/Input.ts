@@ -1,14 +1,15 @@
-import { Attributes } from "../../utils/Attributes";
-import { Block } from "./Block";
-import { Element } from "./Element";
-import { Explainable } from "./interfaces/Explainable";
-import { LocaleLang, SourceInput } from "../Source";
-import { Renderable } from "./interfaces/Renderable";
-import { Renderer } from "../Renderer";
-import { Translatable } from "./interfaces/Translatable";
-import { Versions } from "../Versions";
+import { Attributes } from "../../utils/Attributes.js";
+import { Block } from "./Block.js";
+import { Element } from "./Element.js";
+import { Explainable } from "./interfaces/Explainable.js";
+import { SourceInput } from "../Source.js";
+import { Renderable } from "./interfaces/Renderable.js";
+import { Renderer } from "../Renderer.js";
+import { Translatable } from "./interfaces/Translatable.js";
+import { Versions } from "../Versions.js";
+import { Languages } from "../Languages.js";
 
-export class Input extends Element<Block> implements Explainable, Translatable, Renderable {
+export class Input extends Element<Block> implements Explainable, Translatable<Block, Input>, Renderable {
 	private _type: InputTypes;
 	private _value: string | Block;
 
@@ -29,8 +30,20 @@ export class Input extends Element<Block> implements Explainable, Translatable, 
 		return this._type;
 	}
 
+	public set type(type: Input["_type"]) {
+		this._type = type;
+	}
+
 	public get value(): Input["_value"] {
 		return this._value;
+	}
+
+	public set value(value: Input["_value"]) {
+		this._value = value;
+	}
+
+	public getLanguage(): Languages {
+		throw new Error("Method not implemented.");
 	}
 
 	public explain(indentLevel: number): string {
@@ -41,8 +54,9 @@ export class Input extends Element<Block> implements Explainable, Translatable, 
 		throw new Error("Method not implemented.");
 	}
 
-	public translate(language: LocaleLang): Input {
-		throw new Error("Method not implemented.");
+	public translate(language: Languages, parent: Block): ReturnType<Translatable<Block, Input>["translate"]> {
+		const input = new Input({ parent, version: this.version, type: this.type, value: this.value });
+		return input;
 	}
 
 	public render(renderer: Renderer): ReturnType<Renderable["render"]> {
@@ -51,8 +65,7 @@ export class Input extends Element<Block> implements Explainable, Translatable, 
 
 }
 
-
-export const enum InputTypes {
+export enum InputTypes {
 	BOOLEAN = "boolean",
 	NUMBER = "number",
 	TEXT = "text",
@@ -60,35 +73,35 @@ export const enum InputTypes {
 	STACK = "stack"
 }
 
-export const inputTpes: SourceInput[] = [
-	{
+export const inputTypes: { [key in InputTypes]: SourceInput } = {
+	[InputTypes.NUMBER]: {
 		"type": InputTypes.NUMBER,
 		"symbol": "%d",
 		"start": "(",
 		"end": ")",
 	},
-	{
+	[InputTypes.DROPDOWN]: {
 		"type": InputTypes.DROPDOWN,
 		"symbol": "%m",
 		"start": "(",
 		"end": "v)",
 	},
-	{
+	[InputTypes.TEXT]: {
 		"type": InputTypes.TEXT,
 		"symbol": "%s",
 		"start": "[",
 		"end": "]",
 	},
-	{
+	[InputTypes.BOOLEAN]: {
 		"type": InputTypes.BOOLEAN,
 		"symbol": "%b",
 		"start": "<",
 		"end": ">",
 	},
-	{
+	[InputTypes.STACK]: {
 		"type": InputTypes.STACK,
 		"symbol": "%t",
 		"start": "{",
 		"end": "}",
 	},
-];
+};

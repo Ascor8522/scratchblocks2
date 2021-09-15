@@ -1,16 +1,11 @@
-import { Block } from "../../core/model/Block";
-import { Document } from "../../core/model/Document";
-import { Input } from "../../core/model/Input";
-import { Renderable } from "../../core/model/interfaces/Renderable";
-import { Renderer as BaseRenderer } from "../../core/Renderer";
-import { Stack } from "../../core/model/Stack";
+import { Block } from "../../core/model/Block.js";
+import { Document } from "../../core/model/Document.js";
+import { Input } from "../../core/model/Input.js";
+import { Renderable } from "../../core/model/interfaces/Renderable.js";
+import { Renderer as BaseRenderer } from "../../core/Renderer.js";
+import { Stack } from "../../core/model/Stack.js";
 
 export class Renderer extends BaseRenderer {
-
-	public constructor() {
-		super();
-	}
-
 	public renderDocument(document: Document): ReturnType<Renderable["render"]> {
 		throw new Error("Method not implemented.");
 	}
@@ -26,5 +21,4 @@ export class Renderer extends BaseRenderer {
 	public renderInput(input: Input): ReturnType<Renderable["render"]> {
 		throw new Error("Method not implemented.");
 	}
-
 }

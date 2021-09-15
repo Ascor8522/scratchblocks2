@@ -1,15 +1,15 @@
-import { Attributes } from "../../utils/Attributes";
-import { Block } from "./Block";
-import { Document } from "./Document";
-import { Element } from "./Element";
-import { Explainable } from "./interfaces/Explainable";
-import { LocaleLang } from "../Source";
-import { Renderable } from "./interfaces/Renderable";
-import { Renderer } from "../Renderer";
-import { Translatable } from "./interfaces/Translatable";
-import { Versions } from "../Versions";
+import { Attributes } from "../../utils/Attributes.js";
+import { Block } from "./Block.js";
+import { Document } from "./Document.js";
+import { Element } from "./Element.js";
+import { Explainable } from "./interfaces/Explainable.js";
+import { Renderable } from "./interfaces/Renderable.js";
+import { Renderer } from "../Renderer.js";
+import { Translatable } from "./interfaces/Translatable.js";
+import { Versions } from "../Versions.js";
+import { Languages } from "../Languages.js";
 
-export class Stack extends Element<Document> implements Explainable, Translatable, Renderable {
+export class Stack extends Element<Document> implements Explainable, Translatable<Document, Stack>, Renderable {
 	private _blocks: Block[];
 
 	public static from(sourceCode: string, parent: Document, version: Versions): Stack {
@@ -27,6 +27,14 @@ export class Stack extends Element<Document> implements Explainable, Translatabl
 		return this._blocks;
 	}
 
+	public set blocks(blocks: Stack["_blocks"]) {
+		this._blocks = blocks;
+	}
+
+	public getLanguage(): Languages {
+		throw new Error("Method not implemented.");
+	}
+
 	public explain(indentLevel: number): string {
 		return "\t".repeat(indentLevel) + "Stack:" + "\n" + this._blocks.map(block => block.explain(indentLevel + 1));
 	}
@@ -35,8 +43,14 @@ export class Stack extends Element<Document> implements Explainable, Translatabl
 		throw new Error("Method not implemented.");
 	}
 
-	public translate(language: LocaleLang): Stack {
-		return new Stack({ parent: this.parent, version: this.version, blocks: this._blocks.map(block => block.translate(language)) });
+	public translate(language: Languages, parent: Document): ReturnType<Translatable<Document, Stack>["translate"]> {
+		const stack = new Stack({
+			parent: this.parent,
+			version: this.version,
+			blocks: [],
+		});
+		stack.blocks = this.blocks.map(block => block.translate(language, stack));
+		return stack;
 	}
 
 	public render(renderer: Renderer): ReturnType<Renderable["render"]> {

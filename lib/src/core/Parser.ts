@@ -1,14 +1,8 @@
-import { Document } from "./model/Document";
-import { Versions, defaultVersion } from "./Versions";
+import { Document } from "./model/Document.js";
+import { Versions, defaultVersion } from "./Versions.js";
 
 export abstract class Parser {
-
-	private constructor() {
-		
-	}
-
 	public static parse(code: string, version: Versions = defaultVersion): Document {
 		return Document.from(code, null, version)
 	}
-
 }
