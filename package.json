@@ -28,7 +28,7 @@
   },
   "repository": "github:Ascor8522/scratchblocks2",
   "scripts": {
-    "clean": "find . -wholename '**/src/**/*.js' -delete",
+    "clean": "find . -wholename '*/src/*.js' -delete",
     "lambda-clean": "rm -rf lambda/build",
     "lambda-compile-watch": "npx tsc --project lambda --watch",
     "lambda-compile": "npx tsc --project lambda",
@@ -48,14 +48,13 @@
   },
   "devDependencies": {
     "@google-cloud/functions-framework": "^1.9.0",
-    "@types/chai": "^4.2.21",
+    "@types/chai": "^4.2.22",
     "@types/mocha": "^9.0.0",
-    "@types/node": "^16.9.1",
+    "@types/node": "^16.10.3",
     "chai": "^4.3.4",
-    "mocha": "^9.1.1",
-    "rollup": "^2.56.3",
+    "mocha": "^9.1.2",
+    "rollup": "^2.58.0",
     "rollup-plugin-terser": "^7.0.2",
-    "tslib": "^2.3.1",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.3"
   }
 }

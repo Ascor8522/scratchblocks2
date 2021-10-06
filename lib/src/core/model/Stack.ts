@@ -18,7 +18,7 @@ export class Stack extends Element<Document> implements Explainable, Translatabl
 		new Stack({ parent, version, blocks });
 	}
 
-	private constructor({ parent, version, blocks }: Attributes<Stack>) {
+	public constructor({ parent, version, blocks }: Attributes<Stack>) {
 		super({ parent, version });
 		this._blocks = blocks;
 	}

@@ -8,7 +8,7 @@ export abstract class Element<T extends ThisType<Element<T>> | null> { // TODO f
 	private _version: Versions;
 	private _source: Source;
 
-	protected constructor({ parent, version }: Attributes<Element<T>> & { parent: Element<T>["_parent"] }) { // TODO find why it doesn't work with Attributes<> only
+	public constructor({ parent, version }: Attributes<Element<T>> & { parent: Element<T>["_parent"] }) { // TODO find why it doesn't work with Attributes<> only
 		this._parent = parent;
 		this._version = version;
 		this._source = sources[version];

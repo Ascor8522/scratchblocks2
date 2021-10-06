@@ -20,7 +20,7 @@ export class Document extends Element<null> implements Explainable, Translatable
 		return new Document({ parent, version, stacks });
 	}
 
-	private constructor({ parent, version, stacks }: Attributes<Document>) {
+	public constructor({ parent, version, stacks }: Attributes<Document>) {
 		super({ parent, version });
 		this._stacks = stacks;
 	}

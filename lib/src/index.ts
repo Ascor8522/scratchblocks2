@@ -12,7 +12,7 @@ type parameters = { // TODO rename
 export namespace scratchblocks2 {
 
 	export function parse({version, code}: parameters): ReturnType<typeof Parser["parse"]> {
-		return Parser.parse(code);
+		return Parser.parse(code, version);
 	}
 
 	export function load({version, json}: {version: Versions, json: unknown}): ReturnType<Loader["load"]> {

@@ -31,7 +31,7 @@ export class Block extends Element<Stack> implements Explainable, Translatable<S
 		return new Block({ parent, version, originalCode, code, id, type, shape, color, inputs });
 	}
 
-	private constructor({ parent, version, originalCode, code, id, type, shape, color, inputs }: Attributes<Block>) {
+	public constructor({ parent, version, originalCode, code, id, type, shape, color, inputs }: Attributes<Block>) {
 		super({ parent, version });
 		this._originalCode = originalCode;
 		this._code = code;

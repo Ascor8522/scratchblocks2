@@ -20,7 +20,7 @@ export class Input extends Element<Block> implements Explainable, Translatable<B
 		return new Input({ parent, version, type, value });
 	}
 
-	private constructor({ parent, version, type, value }: Attributes<Input>) {
+	public constructor({ parent, version, type, value }: Attributes<Input>) {
 		super({ parent, version });
 		this._type = type;
 		this._value = value;

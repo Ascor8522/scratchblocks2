@@ -1,17 +1,17 @@
-interface Project {
+export interface Project {
 	targets: Target[];
 	monitors: Monitor[];
 	extensions: any[];
 	meta: Meta;
 }
 
-interface Meta {
+export interface Meta {
 	semver: string;
 	vm: string;
 	agent: string;
 }
 
-interface Monitor {
+export interface Monitor {
 	id: string;
 	mode: string;
 	opcode: string;
@@ -28,11 +28,11 @@ interface Monitor {
 	isDiscrete: boolean;
 }
 
-interface Params {
+export interface Params {
 	VARIABLE?: string;
 }
 
-interface Target {
+export interface Target {
 	isStage: boolean;
 	name: string;
 	variables: Variables;
@@ -58,11 +58,11 @@ interface Target {
 	rotationStyle?: string;
 }
 
-interface Broadcasts {
+export interface Broadcasts {
 	// TODO
 }
 
-interface Sound {
+export interface Sound {
 	assetId: string;
 	name: string;
 	dataFormat: string;
@@ -71,7 +71,7 @@ interface Sound {
 	md5ext: string;
 }
 
-interface Costume {
+export interface Costume {
 	assetId: string;
 	name: string;
 	bitmapResolution: number;
@@ -81,9 +81,9 @@ interface Costume {
 	rotationCenterY: number;
 }
 
-type BlockId = string;
+export type BlockId = string;
 
-interface Block {
+export interface Block {
 	fields: InputField;
 	inputs: InputField;
 	next?: string;
@@ -95,14 +95,14 @@ interface Block {
 	y?: number;
 }
 
-type InputField = {
+export type InputField = {
 	[type: string]: number | string | (number | string)[] | (number | string)[][];
 }
 
-interface Lists {
+export interface Lists {
 	[id: string]: (string[] | string)[];
 }
 
-type Variables = {
+export type Variables = {
 	[id: string] : (number | string)[];
 }

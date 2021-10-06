@@ -9,17 +9,19 @@ thumbnail: img/placeholder.jpg
 <ul>
 	{% for p in site.pages %}
 		{% if p.url contains "html" %}
-		<li>
-			<a href="{{ site.baseurl }}{{ p.url }}">
-				<div>
-					<figure>
-						<img src="{{ p.thumbnail }}" alt="{{ p.title }}">
-						<p>{{ p.title }}</p>
-						<figcaption>{{ p.description }}</figcaption>
-					</figure>
-				</div>
-			</a>
-		</li>
+			{% unless p.url contains "404" %}
+				<li>
+					<a href="{{ site.baseurl }}{{ p.url }}">
+						<div>
+							<figure>
+								<img src="{{ p.thumbnail }}" alt="{{ p.title }}">
+								<p>{{ p.title }}</p>
+								<figcaption>{{ p.description }}</figcaption>
+							</figure>
+						</div>
+					</a>
+				</li>
+			{% endunless %}
 		{% endif %}
 	{% endfor %}
 </ul>
