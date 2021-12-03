@@ -1,60 +1,77 @@
 {
-  "name": "scratchblocks2",
-  "version": "0.1.0",
-  "description": "A TypeScript rewrite of the original scratchblocks package",
-  "keywords": [
-    "scratchblocks2",
-    "scratchblocks",
-    "scratch",
-    "blocks"
-  ],
-  "homepage": "https://github.com/Ascor8522/scratchblocks2",
-  "bugs": {
-    "url": "https://github.com/Ascor8522/scratchblocks2/issues"
-  },
-  "license": "CC-BY-NC-SA-4.0",
-  "contributors": [
-    {
-      "name": "Ascor8522",
-      "url": "https://github.com/Ascor8522"
-    }
-  ],
-  "funding": [],
-  "main": "lib/dist/scratchblocks2.js",
-  "types": "lib/types",
-  "type": "module",
-  "directories": {
-    "doc": "docs"
-  },
-  "repository": "github:Ascor8522/scratchblocks2",
-  "scripts": {
-    "clean": "find . -wholename '*/src/*.js' -delete",
-    "lambda-clean": "rm -rf lambda/build",
-    "lambda-compile-watch": "npx tsc --project lambda --watch",
-    "lambda-compile": "npx tsc --project lambda",
-    "lib-clean": "rm -rf lib/build lib/dist lib/types",
-    "lib-bundle-watch": "npx rollup --input lib/build/index.js --file lib/dist/scratchblocks2.js --format es --name scratchblocks2 --compact --preferConst --no-stdin --strictDeprecations -p rollup-plugin-terser --watch",
-    "lib-bundle": "npx rollup --input lib/build/index.js --file lib/dist/scratchblocks2.js --format es --name scratchblocks2 --compact --preferConst --no-stdin --strictDeprecations -p rollup-plugin-terser ",
-    "lib-compile-watch": "npx tsc --project lib --watch",
-    "lib-compile": "npx tsc --project lib",
-    "tests-compile-watch": "npx tsc --project test --watch",
-    "tests-compile": "npx tsc --project test",
-    "tests-run": "",
-    "docs-compile-watch": "npx tsc --project docs --watch",
-    "docs-compile": "npx tsc --project docs",
-    "docs-serve-watch": "bundle exec jekyll serve --baseurl '' --incremental --force_polling",
-    "docs-serve": "bundle exec jekyll serve --baseurl '' --no-watch",
-    "start": "npm run-script docs-serve"
-  },
-  "devDependencies": {
-    "@google-cloud/functions-framework": "^1.9.0",
-    "@types/chai": "^4.2.22",
-    "@types/mocha": "^9.0.0",
-    "@types/node": "^16.10.3",
-    "chai": "^4.3.4",
-    "mocha": "^9.1.2",
-    "rollup": "^2.58.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^4.4.3"
-  }
+	"name": "scratchblocks2",
+	"version": "0.1.0",
+	"description": "A TypeScript rewrite of the original scratchblocks package",
+	"keywords": [
+		"scratchblocks2",
+		"scratchblocks",
+		"scratch",
+		"blocks"
+	],
+	"homepage": "https://github.com/Ascor8522/scratchblocks2",
+	"bugs": {
+		"url": "https://github.com/Ascor8522/scratchblocks2/issues"
+	},
+	"license": "CC-BY-NC-SA-4.0",
+	"contributors": [
+		{
+			"name": "Ascor8522",
+			"url": "https://github.com/Ascor8522"
+		}
+	],
+	"funding": [],
+	"main": "dist/lib/scratchblocks2.js",
+	"types": "types/",
+	"type": "module",
+	"directories": {
+		"doc": "docs"
+	},
+	"repository": "github:Ascor8522/scratchblocks2",
+	"scripts": {
+		"check-nxp": "npx -v",
+		"check-ruby": "ruby -v",
+		"check-gem": "gem -v",
+		"check-bundler": "bundler -v",
+
+		"clean": "npm run-script clean-build && npm run-script clean-dist && npm run-script clean-types",
+		"clean-lambda": "rm -rf build/lambda",
+		"clean-lib": "rm -rf build/lib",
+		"clean-test": "rm -rf build/test",
+		"clean-web": "rm -rf build/web",
+		"clean-build": "rm -rf build",
+		"clean-dist": "rm -rf dist",
+		"clean-types": "rm -rf types",
+
+		"compile": "npx tsc",
+		"compile-watch": "npx tsc --watch",
+
+		"types": "npx tsc --declaration --emitDeclarationOnly",
+
+		"bundle": "npx rollup --config rollup.config.ts --configPlugin typescript",
+		"bundle-watch": "rollup --config rollup.config.ts --configPlugin typescript --watch",
+
+		"test-run": "npx mocha --file build/test/**/*.js",
+
+		"docs-serve": "bundle exec jekyll serve --baseurl '' --no-watch",
+		"docs-serve-watch": "bundle exec jekyll serve --baseurl '' --incremental --force_polling",
+		"start": "npm run-script docs-serve"
+	},
+	"devDependencies": {
+		"@google-cloud/functions-framework": "^1.10.0",
+		"@rollup/plugin-typescript": "^8.3.0",
+		"@types/aws-lambda": "^8.10.85",
+		"@types/chai": "^4.2.22",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "^14.17.34",
+		"chai": "^4.3.4",
+		"mocha": "^9.1.3",
+		"rollup": "^2.60.2",
+		"rollup-plugin-terser": "^7.0.2",
+		"tslib": "^2.3.1",
+		"typescript": "^4.5.2"
+	},
+	"dependencies": {},
+	"engines": {
+		"node": ">=14.0.0"
+	}
 }

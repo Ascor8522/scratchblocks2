@@ -1,13 +1,24 @@
 {
 	"compilerOptions": {
-	  "target": "esnext",
-	  "module": "ESNext",
-	  "lib": ["ESNext", "DOM"],
-	  "strict": true,
-	  "importHelpers": false
+		"target": "esnext",
+		"module": "ESNext",
+		"lib": [
+			"ESNext",
+			"DOM"
+		],
+		"strict": true,
+		"moduleResolution": "node",
+		"skipLibCheck": true,
+		"removeComments": true,
+		"outDir": "build",
+		"declaration": true,
+		"declarationDir": "types",
+		"baseUrl": ".",
 	},
 	"typeAcquisition": {
 		"enable": true
-	}
-  }
-  
+	},
+	"include": [
+		"src/**/*"
+	]
+}

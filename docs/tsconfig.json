@@ -1,7 +1,12 @@
 {
 	"extends": "../tsconfig.json",
 	"compilerOptions": {
-		"rootDirs": ["src", "../lib/src"],
-		"outDir": "build",
-	}
+		"baseUrl": ".",
+		"paths": {
+			"scratchblocks2": ["../types/lib/index.d.ts"]
+		}
+	},
+	"include": [
+		"src/**/*.ts"
+	]
 }

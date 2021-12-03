@@ -1,0 +1,54 @@
+name: Scratchblocks2 Actions
+
+on:
+  push:
+    branches:
+      - master
+  workflow_call:
+    secrets:
+      aws_access_key_id:
+        description: 'The AWS access key id'
+        required: true
+      aws_secret_access_key:
+        description: 'The AWS secret access key'
+        required: true
+      aws_region:
+        description: 'The AWS region'
+        required: true
+      aws_role_to_assume:
+        description: 'The AWS role to assume'
+        required: true
+
+env:
+  env: production
+
+jobs:
+  main:
+    name: Main job
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{secrets.aws_access_key_id}}
+          aws-secret-access-key: ${{secrets.aws_secret_access_key}}
+          role-to-assume: ${{secrets.aws_role_to_assume}}
+          aws-region: ${{secrets.aws_region}}
+      - run: npm install
+      - name: Compile
+        run: npm run-script compile
+      - name: Types
+        run: npm run-script types
+      - name: Tests
+        run: npm run-script test-run
+      - name: Bundle
+        run: npm run-script bundle

@@ -1,4 +1,0 @@
-build
-src/tests/*.json
-dist
-types
